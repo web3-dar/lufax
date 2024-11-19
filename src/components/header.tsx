@@ -3,7 +3,7 @@ import logo from '../logo.80d5324a.png';
 
 const Navbar: React.FC = () => {
   const navItems = [
-    { label: 'Home', link: '#' },
+    { label: 'Home', link: '/' },
     {
       label: 'About Us',
       link: '/about',
@@ -24,8 +24,8 @@ const Navbar: React.FC = () => {
       ] 
     },
     { label: 'News Center', link: '/news-center' },
-    { label: 'Investor Relations', link: '#' },
-    { label: 'Contact Us', link: '#' },
+    { label: 'Investor Relations', link: '/invest' },
+    { label: 'Contact Us', link: '/contact' },
     { label: 'Join Us', link: '#', dropdown: [
       { label: 'Social Recruitment', link: '#' },
       { label: 'Campus Recruitment', link: '#' }

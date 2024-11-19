@@ -1,4 +1,3 @@
-// src/pages/news.tsx
 import React, { useState } from 'react';
 import { newsData } from './type'; // Import the interface and data
 import { Link } from 'react-router-dom'; // Import Link for navigation
@@ -15,18 +14,9 @@ const NewsCenter: React.FC = () => {
   // Calculate total pages
   const totalPages = Math.ceil(newsData.length / postsPerPage);
 
-  // Handle the next page click
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  // Handle the previous page click
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+  // Handle page change
+  const changePage = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -55,24 +45,42 @@ const NewsCenter: React.FC = () => {
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-between mt-8">
+      <div className="flex justify-center mt-8 space-x-2 items-center">
+        {/* Previous Button */}
         <button
-          onClick={prevPage}
+          onClick={() => changePage(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:bg-gray-300"
+          className="px-3 py-1 bg-gray-200 text-gray-500 rounded-lg hover:bg-gray-300 disabled:opacity-50"
         >
-          Previous
+          &lt;
         </button>
-        <span className="text-lg">
-          Page {currentPage} of {totalPages}
-        </span>
+
+        {/* Page Numbers */}
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <button
+            key={page}
+            onClick={() => changePage(page)}
+            className={`px-3 py-1 rounded-lg ${
+              page === currentPage
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-200 text-gray-500 hover:bg-gray-300'
+            }`}
+          >
+            {page}
+          </button>
+        ))}
+
+        {/* Next Button */}
         <button
-          onClick={nextPage}
+          onClick={() => changePage(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg disabled:bg-gray-300"
+          className="px-3 py-1 bg-gray-200 text-gray-500 rounded-lg hover:bg-gray-300 disabled:opacity-50"
         >
-          Next
+          &gt;
         </button>
+
+        {/* Total Items */}
+        <span className="text-gray-600 ml-4">Total {newsData.length} Items</span>
       </div>
     </div>
   );

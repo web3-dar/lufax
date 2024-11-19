@@ -8,6 +8,7 @@ import Navbar from './components/header';
 import Footer from './components/footer';
 import NewsCenter from './pages/newsCenter/news';
 import NewsDetailPage from './pages/newsCenter/NewsDetails';
+import Invest from './pages/invest';
 
 const NotFound = () => <div>404 - Page Not Found</div>;
 
@@ -24,6 +25,8 @@ const App: React.FC = () => {
           <Route path="/news-center" element={<NewsCenter />} /> 
           <Route path="/news/:id" element={<NewsDetailPage />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/invest" element={<Invest />} />
+          
         </Routes>
         <Footer />
       </BrowserRouter>
