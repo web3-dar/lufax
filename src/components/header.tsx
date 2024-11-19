@@ -56,7 +56,9 @@ const Navbar: React.FC = () => {
       <div className="flex justify-evenly  items-center">
         {/* Logo */}
         <div className="flex items-center">
-          <img src={logo} alt="Logo" className="h-10 w-auto" />
+        <a href="/">
+         <img src={logo} alt="Logo" className="h-10 w-auto" />
+        </a> 
         </div>
 
         {/* Hamburger Icon on Small Screens */}
